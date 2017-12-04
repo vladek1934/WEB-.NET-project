@@ -13,17 +13,17 @@ namespace WEB_PROJECT.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Draw()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Showcase()
         {
-            ViewBag.Message = "Your contact page.";
-
+            return View();
+        }
+        public ActionResult Drawings()
+        {
             return View();
         }
     }
