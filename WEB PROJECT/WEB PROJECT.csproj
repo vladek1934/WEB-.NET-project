@@ -257,8 +257,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Showcase.cshtml" />
-    <Content Include="Views\Home\Draw.cshtml" />
     <Content Include="Views\Home\Drawings.cshtml" />
+    <Content Include="Views\Home\Draw.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
