@@ -3,7 +3,9 @@
     line-height: 1.8;
     color: #818181;
 }
-
+#work {
+    border:3px solid black;
+}
 h2 {
     font-size: 24px;
     text-transform: uppercase;
@@ -11,7 +13,19 @@ h2 {
     font-weight: 600;
     margin-bottom: 30px;
 }
+a:hover{cursor:pointer;
+        color:palevioletred;
+}
+canvas:hover {
+   
+    border:7px solid green;
+    cursor: url("pencil.png"), default;
+}
 
+canvas {
+    transition:ease 0.5s;
+    border:7px solid red;
+}
 h4 {
     font-size: 19px;
     line-height: 1.375em;
