@@ -4,17 +4,24 @@
 }
 
 <div class="container-fluid bg-grey">
-    <div class="row">
+    <h2>Your works</h2>
+    <input type="submit" class="btn btn-primary btn-block" value="View/Edit your works" onclick="location.href='@Url.Action("Drawings", "Home")'" />
+    <input type="submit" class="btn btn-primary btn-block" value="Back to all" onclick="location.href='@Url.Action("Showcase", "Home")'" />
+    <br />
+    <div class="row text-center">
         @foreach (var img in Model)
         {
             var base64 = Convert.ToBase64String(img.Image);
             var imgsrc = string.Format("data:image/png;base64,{0}", base64);
-            
-            <img src='@imgsrc' id ="work" style="max-width:350px;max-height:350px;" />
-            @Html.ActionLink("Delete", "Delete", new { id = img.ImageID })
-            <span style="display:block">@img.Name</span>
-             
+
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src='@imgsrc' id="work" style="max-width:350px;max-height:350px;" />
+                    <p><strong>@img.Name</strong></p>
+                    <p>A work by you</p>
+                    @Html.ActionLink("Delete", "Delete", new { id = img.ImageID })
+                </div>
+            </div>
         }
-       
     </div>
 </div>

@@ -10,13 +10,11 @@
 
     var mouse = { x: 0, y: 0 };
 
-    /* Mouse Capturing Work */
     canvas.addEventListener('mousemove', function (e) {
         mouse.x = e.pageX - this.offsetLeft;
         mouse.y = e.pageY - this.offsetTop;
     }, false);
 
-    /* Drawing on Paint App */
     ctx.lineWidth = 5;
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
