@@ -18,7 +18,7 @@
     ctx.lineWidth = 5;
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'black';
 
     canvas.addEventListener('mousedown', function (e) {
         ctx.beginPath();

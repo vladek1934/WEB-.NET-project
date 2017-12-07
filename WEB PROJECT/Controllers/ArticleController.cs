@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace WEB_PROJECT.Controllers
 {
-    public class HomeController : Controller
+    public class ArticleController : Controller
     {
 
         public ActionResult Index()
