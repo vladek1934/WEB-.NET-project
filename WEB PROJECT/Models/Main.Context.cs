@@ -13,10 +13,10 @@ namespace WEB_PROJECT.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities2 : DbContext
+    public partial class Entities3 : DbContext
     {
-        public Entities2()
-            : base("name=Entities2")
+        public Entities3()
+            : base("name=Entities3")
         {
         }
     
@@ -26,6 +26,7 @@ namespace WEB_PROJECT.Models
         }
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<Articles> Articles { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }

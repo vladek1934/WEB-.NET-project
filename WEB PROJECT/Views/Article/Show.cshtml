@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WEB_PROJECT.Models.Articles>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Articles</h2>
+
+<input type="submit" class="btn btn-primary " value="Create a new one" onclick="location.href='@Url.Action("Create", "Article")'" />
+
+<div class="container-fluid bg-grey">
+    <h2>All Articles</h2>
+    <input type="submit" class="btn btn-primary btn-block" value="View/Edit your works" onclick="location.href='@Url.Action("Show", "Article")'" />
+    <input type="submit" class="btn btn-primary btn-block" value="Back to all" onclick="location.href='@Url.Action("Display", "Article")'" />
+    <br />
+    <div class="row text-center">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <h1>@Html.DisplayFor(modelItem => item.Header)</h1>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Body)
+                    </p>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ArticleID }, new {@class="redlink"}) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ArticleID }, new { @class = "redlink" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ArticleID }, new { @class = "redlink" })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

@@ -10,59 +10,86 @@ namespace WEB_PROJECT.Controllers
 {
     public class ArticleController : Controller
     {
-
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Show");
         }
         [Authorize]
-        public ActionResult Draw()
+        public ActionResult Create()
         {
-            Images image = new Images();
-            return View(image);
-        }
-        [Authorize]
-        public ActionResult Showcase()
-        {
-            Entities2 db = new Entities2();
-            var imagesList = (from img in db.Images select img).ToList();
-            return View(imagesList);
-        }
-        [Authorize]
-        public ActionResult Drawings()
-        {
-            Entities2 db = new Entities2();
-            var user = db.AspNetUsers.Find(User.Identity.GetUserId());
-            var imagesList = user.Images.ToList();
-            return View(imagesList);
+            Articles article = new Articles();
+            return View(article);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult Draw(HttpPostedFileBase image)
+        public ActionResult Create(Articles article)
         {
-            Entities2 db = new Entities2();
-            Images model = new Images();
-            model.UserID = User.Identity.GetUserId();
-            if (image != null)
+            Entities3 db = new Entities3();
+            if (article != null)
             {
-                model.Name = image.FileName+" " + User.Identity.GetUserName();
-                model.Image = new byte[image.ContentLength];
-                image.InputStream.Read(model.Image, 0, image.ContentLength);
-                db.Images.Add(model);
+                article.UserID = User.Identity.GetUserId();
+                article.UserName = User.Identity.GetUserName();
+                article.Date = System.DateTime.Now.ToString();
+                db.Articles.Add(article);
                 db.SaveChanges();
-                return RedirectToAction("Drawings");
+                return RedirectToAction("Show");
             }
-            else return Index();
+            else return View();
         }
+
+        [Authorize]
+        public ActionResult Show()
+        {
+            Entities3 db = new Entities3();
+            var user = db.AspNetUsers.Find(User.Identity.GetUserId());
+            var artList = user.Articles.ToList();
+            return View(artList);
+        }
+        [Authorize]
+        public ActionResult Display()
+        {
+            Entities3 db = new Entities3();
+            var artList = (from art in db.Articles select art).ToList();
+            return View(artList);
+        }
+
+        [Authorize]
+        public ActionResult Details(int id)
+        {
+            Entities3 db = new Entities3();
+            Articles art = db.Articles.Find(id);
+            return View(art);
+        }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            Entities3 db = new Entities3();
+            Articles art = db.Articles.Find(id);
+            return View(art);
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(Articles article)
+        {
+            Entities3 db = new Entities3();
+            var id = article.ArticleID;
+            Articles art = db.Articles.Find(id);
+            art.Body = article.Body;
+            art.Header = article.Header;
+            db.SaveChanges();
+            return RedirectToAction("Show");
+        }
+
         [Authorize]
         public ActionResult Delete(int id)
         {
-            Entities2 db = new Entities2();
-            Images img = db.Images.Find(id);
-            db.Images.Remove(img);
+            Entities3 db = new Entities3();
+            Articles art = db.Articles.Find(id);
+            db.Articles.Remove(art);
             db.SaveChanges();
-            return RedirectToAction("Drawings");
+            return RedirectToAction("Show");
         }
     }
 }

@@ -24,24 +24,31 @@ namespace WEB_PROJECT.Controllers
         [Authorize]
         public ActionResult Showcase()
         {
-            Entities2 db = new Entities2();
+            Entities3 db = new Entities3();
             var imagesList = (from img in db.Images select img).ToList();
             return View(imagesList);
         }
         [Authorize]
+        public ActionResult Details()
+        {
+            Entities3 db = new Entities3();
+            var user = db.AspNetUsers.Find(User.Identity.GetUserId());
+            var imagesList = user.Images.ToList();
+            return View(imagesList);    
+        }
+        [Authorize]
         public ActionResult Drawings()
         {
-            Entities2 db = new Entities2();
+            Entities3 db = new Entities3();
             var user = db.AspNetUsers.Find(User.Identity.GetUserId());
             var imagesList = user.Images.ToList();
             return View(imagesList);
         }
-
         [Authorize]
         [HttpPost]
         public ActionResult Draw(HttpPostedFileBase image)
         {
-            Entities2 db = new Entities2();
+            Entities3 db = new Entities3();
             Images model = new Images();
             model.UserID = User.Identity.GetUserId();
             if (image != null)
@@ -58,7 +65,7 @@ namespace WEB_PROJECT.Controllers
         [Authorize]
         public ActionResult Delete(int id)
         {
-            Entities2 db = new Entities2();
+            Entities3 db = new Entities3();
             Images img = db.Images.Find(id);
             db.Images.Remove(img);
             db.SaveChanges();

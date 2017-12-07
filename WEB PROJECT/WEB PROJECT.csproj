@@ -199,6 +199,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Articles.cs">
+      <DependentUpon>Main.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>Main.tt</DependentUpon>
     </Compile>
@@ -318,6 +321,11 @@
     <Content Include="Views\Home\Showcase.cshtml" />
     <Content Include="Views\Home\Drawings.cshtml" />
     <Content Include="Views\Home\Draw.cshtml" />
+    <Content Include="Views\Article\Create.cshtml" />
+    <Content Include="Views\Article\Show.cshtml" />
+    <Content Include="Views\Article\Details.cshtml" />
+    <Content Include="Views\Article\Edit.cshtml" />
+    <Content Include="Views\Article\Display.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
